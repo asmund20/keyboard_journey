@@ -3,7 +3,7 @@ points:
     
     outer:
       key:
-        bind: [2,2,2,2]
+        bind: 2
       columns:
         col:
 
@@ -13,7 +13,7 @@ points:
     
     matrix:
       key:
-        bind: [2,2,2,2]
+        bind: 2
       anchor:
         ref: outer_col_home
         shift: [cx,-cy]
@@ -47,7 +47,7 @@ points:
         ref: matrix_index_bottom
         shift: [0, -cy]
       key:
-        bind: [8, 8, 8, 8]
+        bind: 8
       rows:
         home:
       columns:
