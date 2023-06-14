@@ -1,44 +1,69 @@
 points:
   zones:
+    
     outer:
+      key:
+        bind: [2,2,2,2]
       columns:
         col:
+
       rows:
         home:
         top:
+    
     matrix:
+      key:
+        bind: [2,2,2,2]
       anchor:
         ref: outer_col_home
         shift: [cx,-cy]
       columns:
-        pinkie.key.stagger:
-        ring.key.stagger: 0.5cy
-        middle.key.stagger: 0.5cy
-        index.key.stagger: -0.5cy
-        far.key.stagger:
-        pinkie.key.spread: cx
-        ring.key.spread: cx
-        middle.key.spread: cx
-        index.key.spread: cx
-        far.key.spread: cx
+        pinkie:
+          key:
+            spread: cx
+        ring:
+          key:
+            stagger: 0.5cy
+            spread: cx
+        middle:
+          key:
+            stagger: 0.5cy
+            spread: cx
+        index:
+          key:
+            stagger: -0.5cy
+            spread: cx
+        far:
+          key:
+            spread: cx
+
       rows:
         bottom:
         home:
         top:
+
     thumb:
       anchor:
         ref: matrix_index_bottom
         shift: [0, -cy]
+      key:
+        bind: [8, 8, 8, 8]
       rows:
+        home:
       columns:
         close:
-        mid.key.spread: cx + 5
-        mid.key.rotate: -30
-        mid.key.stagger: -7
-        far.key.spread: cx-2
-        far.key.stagger: -18
-        far.key.rotate: -65
+        mid:
+          key:
+            spread: cx + 5
+            rotate: -30
+            stagger: -7
+        far:
+          key:
+            spread: cx-2
+            stagger: -18
+            rotate: -65
 
-    
   key:
     padding: cy
+
+outlines:
