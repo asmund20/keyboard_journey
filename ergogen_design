@@ -27,15 +27,17 @@ points:
         top:
     thumb:
       anchor:
-        ref: matrix_far_bottom
-        shift: [cx, -2cy]
-      
+        ref: matrix_index_bottom
+        shift: [0, -cy]
       rows:
       columns:
         close:
-        mid.key.sp
-        read: cx
-        far.key.spread: cx
+        mid.key.spread: cx + 5
+        mid.key.rotate: -30
+        mid.key.stagger: -7
+        far.key.spread: cx-2
+        far.key.stagger: -18
+        far.key.rotate: -65
 
     
   key:
