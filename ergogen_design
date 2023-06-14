@@ -1,0 +1,42 @@
+points:
+  zones:
+    outer:
+      columns:
+        col:
+      rows:
+        home:
+        top:
+    matrix:
+      anchor:
+        ref: outer_col_home
+        shift: [cx,-cy]
+      columns:
+        pinkie.key.stagger:
+        ring.key.stagger: 0.5cy
+        middle.key.stagger: 0.5cy
+        index.key.stagger: -0.5cy
+        far.key.stagger:
+        pinkie.key.spread: cx
+        ring.key.spread: cx
+        middle.key.spread: cx
+        index.key.spread: cx
+        far.key.spread: cx
+      rows:
+        bottom:
+        home:
+        top:
+    thumb:
+      anchor:
+        ref: matrix_far_bottom
+        shift: [cx, -2cy]
+      
+      rows:
+      columns:
+        close:
+        mid.key.sp
+        read: cx
+        far.key.spread: cx
+
+    
+  key:
+    padding: cy
