@@ -93,16 +93,6 @@ points:
           keycaps: true
           reverse: true
           hotswap: true
-        choc:
-          type: choc
-          anchor:
-            rotate: 180
-          nets:
-            from: =column_net
-            to: GND
-          params:
-              keycaps: true
-              reverse: true
 
 outlines:
   raw:
