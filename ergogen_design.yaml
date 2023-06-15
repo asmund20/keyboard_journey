@@ -23,16 +23,27 @@ points:
         pinkie:
           key:
             spread: cx
+          rows:
+            bottom:
+              bind: [0,40,0,0]
+
         ring:
           key:
             stagger: 0.5cy
             spread: cx+1.5
             splay: -4
+          rows:
+            top:
+              bind: [0,0,0,10]
+
         middle:
           key:
             stagger: 0.5cy
             spread: cx+1.5
             splay: -4
+          rows:
+            top:
+              bind: [0,10,0,0]
         index:
           key:
             stagger: -0.5cy
@@ -99,4 +110,17 @@ outlines:
       size: [cx, cy]
       where: true
       bound: true
-      corner: 2
+    - what: polygon
+      points:
+        - ref: thumb_far_home
+          shift: [0.5cx, -8.3]
+        - ref: thumb_mid_home
+          shift: [1.5cx, 10]
+        - ref: thumb_close_home
+          shift: [-0.5cx, 2cy+5]
+        - ref: thumb_close_home
+          shift: [-9, -2cy]
+  cutout:
+    - what: outline
+      name: raw
+      fillet: 2
