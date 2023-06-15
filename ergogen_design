@@ -3,17 +3,19 @@ points:
     
     outer:
       key:
-        bind: 2
       columns:
         col:
+          rows:
+            home:
+              bind: [2, 1, 0, 0]
+            top:
+              bind: [0, 1, 0, 0]
 
       rows:
         home:
         top:
     
     matrix:
-      key:
-        bind: 2
       anchor:
         ref: outer_col_home
         shift: [cx,-cy]
@@ -24,15 +26,18 @@ points:
         ring:
           key:
             stagger: 0.5cy
-            spread: cx
+            spread: cx+1.5
+            splay: -4
         middle:
           key:
             stagger: 0.5cy
-            spread: cx
+            spread: cx+1.5
+            splay: -4
         index:
           key:
             stagger: -0.5cy
-            spread: cx
+            spread: cx+1.5
+            splay: -4
         far:
           key:
             spread: cx
@@ -47,7 +52,7 @@ points:
         ref: matrix_index_bottom
         shift: [0, -cy]
       key:
-        bind: 8
+        bind: 
       rows:
         home:
       columns:
@@ -65,5 +70,33 @@ points:
 
   key:
     padding: cy
+    tags: 
+      1u: true
+    footprints:
+      choc_hotswap:
+        type: choc
+        nets:
+          from: =column_net
+          to: GND
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
+        choc:
+          type: choc
+          anchor:
+            rotate: 180
+          nets:
+            from: =column_net
+            to: GND
+          params:
+              keycaps: true
+              reverse: true
 
 outlines:
+  raw:
+    - what: rectangle
+      size: [cx, cy]
+      where: true
+      bound: true
+      corner: 2
