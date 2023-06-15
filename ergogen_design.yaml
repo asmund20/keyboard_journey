@@ -127,6 +127,6 @@ outlines:
   
   preview:
     - what: rectangle
-      size: [cx-0.1,cy-0.1]
+      size: [cx-0.5,cy-0.5]
       bound: false
       where: true
