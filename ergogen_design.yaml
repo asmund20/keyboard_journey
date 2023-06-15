@@ -124,3 +124,9 @@ outlines:
     - what: outline
       name: raw
       fillet: 2
+  
+  preview:
+    - what: rectangle
+      size: [cx-0.1,cy-0.1]
+      bound: false
+      where: true
