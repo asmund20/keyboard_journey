@@ -43,7 +43,7 @@ points:
             splay: -4
           rows:
             top:
-              bind: [0,10,0,0]
+              bind: [0,5,0,10]
         index:
           key:
             stagger: -0.5cy
