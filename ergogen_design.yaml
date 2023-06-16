@@ -83,16 +83,7 @@ points:
     padding: cy
     tags: 
       1u: true
-    footprints:
-      choc_hotswap:
-        type: choc
-        nets:
-          from: =column_net
-          to: GND
-        params:
-          keycaps: true
-          reverse: true
-          hotswap: true
+    
 
 outlines:
   raw:
@@ -105,18 +96,77 @@ outlines:
         - ref: thumb_far_home
           shift: [0.5cx, -8.3]
         - ref: thumb_mid_home
-          shift: [1.5cx, 10]
+          shift: [1.5cx, 2]
         - ref: thumb_close_home
-          shift: [-0.5cx, 2cy+5]
+          shift: [-0.5cx, 2cy+33]
         - ref: thumb_close_home
           shift: [-9, -2cy]
+    - what: circle
+      radius: 35
+      where:
+        ref: thumb_far_home
+        shift: [1,-45]
+      operation: subtract
+    - what: rectangle
+      size: [60,60]
+      where:
+        ref: matrix_index_top
+        shift: [21,-16]
+
   cutout:
     - what: outline
       name: raw
       fillet: 2
-  
-  preview:
+    
+  keycaps_only:
     - what: rectangle
-      size: [cx-0.5,cy-0.5]
+      size: [cx-0.5, cy-0.5]
       bound: false
       where: true
+  
+  preview:
+    - what: outline
+      name: cutout
+    - what: outline
+      name: keycaps_only
+      operation: subtract
+
+  raw_with_keycaps:
+    - what: outline
+      name: raw
+    - what: outline
+      name: keycaps_only
+      operation: subtract
+
+pcbs:
+  my_first_board:
+    outlines:
+      board:
+        outline: cutout
+      keycaps:
+        outline: preview
+        layer: Eco1.User
+    footprints:
+      choc_hotswap:
+        what: choc_hotswap
+        where: true
+        params:
+          from: =column_net
+          to: GND
+          keycaps: true
+          reverse: true
+          hotswap: true
+      choc:
+        what: choc
+        where: true
+        adjust:
+          rotate: 180
+        params:
+          from: =column_net
+          to: GND
+          keycaps: true
+          reverse: true
+      promicro:
+        what: promicro_pretty
+        where:
+          ref: 
