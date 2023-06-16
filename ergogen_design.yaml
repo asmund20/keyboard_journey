@@ -1,165 +1,183 @@
 points:
-  zones:
-    
-    outer:
-      key:
-      columns:
-        col:
-          rows:
-            home:
-              bind: [2, 1, 0, 0]
-            top:
-              bind: [0, 1, 0, 0]
-
-      rows:
-        home:
-        top:
-    
-    matrix:
-      anchor:
-        ref: outer_col_home
-        shift: [cx,-cy]
-      columns:
-        pinkie:
-          key:
-            spread: cx
-          rows:
-            bottom:
-              bind: [0,40,0,0]
-
-        ring:
-          key:
-            stagger: 0.5cy
-            spread: cx+1.5
-            splay: -4
-          rows:
-            top:
-              bind: [0,0,0,10]
-
-        middle:
-          key:
-            stagger: 0.5cy
-            spread: cx+1.5
-            splay: -4
-          rows:
-            top:
-              bind: [0,5,0,10]
-        index:
-          key:
-            stagger: -0.5cy
-            spread: cx+1.5
-            splay: -4
-        far:
-          key:
-            spread: cx
-
-      rows:
-        bottom:
-        home:
-        top:
-
-    thumb:
-      anchor:
-        ref: matrix_index_bottom
-        shift: [0, -cy]
-      key:
-        bind: 
-      rows:
-        home:
-      columns:
-        close:
-        mid:
-          key:
-            spread: cx + 5
-            rotate: -30
-            stagger: -7
-        far:
-          key:
-            spread: cx-2
-            stagger: -18
-            rotate: -65
-
   key:
     padding: cy
-
-outlines:
-  raw:
-    - what: rectangle
-      size: [cx, cy]
-      where: true
-      bound: true
-    - what: rectangle
-      size: [70,100]
-      where:
-        ref: matrix_index_top
-        shift: [26,-38]
-    - what: circle
-      radius: 35
-      where:
-        ref: thumb_far_home
-        shift: [1, -45]
-      operation: subtract
-    - what: rectangle
-      size: [20, 50]
-      where:
-        ref: matrix_index_bottom
-        shift: [60, -33]
-      operation: subtract
-
-  cutout:
-    - what: outline
-      name: raw
-      fillet: 2
-    
-  keycaps_only:
-    - what: rectangle
-      size: [cx-0.5, cy-0.5]
-      bound: false
-      where: true
-  
-  preview:
-    - what: outline
-      name: cutout
-    - what: outline
-      name: keycaps_only
-      operation: subtract
-
-  raw_with_keycaps:
-    - what: outline
-      name: raw
-    - what: outline
-      name: keycaps_only
-      operation: subtract
-
-pcbs:
-  my_first_board:
-    outlines:
-      board:
-        outline: cutout
-      keycaps:
-        outline: preview
-        layer: Eco1.User
+    bind: [1,1,1,1]
     footprints:
       choc_hotswap:
-        what: choc_hotswap
-        where: true
-        params:
+        type: choc
+        nets:
           from: =column_net
           to: GND
+        params:
           keycaps: true
           reverse: true
           hotswap: true
       choc:
-        what: choc
-        where: true
-        adjust:
+        type: choc
+        anchor:
           rotate: 180
-        params:
+        nets:
           from: =column_net
           to: GND
+        params:
           keycaps: true
-          reverse: true
+          
+  zones:
+    matrix:
+      rows:
+        bottom:
+        home:
+        top:
+      columns:
+        outer:
+          row_overrides:
+            home:
+              column_net: P0
+            top:
+              column_net: P1
+        pinkie:
+          stagger: -cy
+          spread: cx
+          rows:
+            bottom:
+              bind: [1,40,1,1]
+              column_net: P2
+            home:
+              bind: [1, 1, 0, 0]
+              column_net: P3
+            top:
+              column_net: P4
+
+        ring:
+          spread: cx+1.5
+          rotate: -4
+          stagger: 0.5cy
+          rows:
+            top:
+              bind: [1,1,1,10]
+              column_net: P5
+            home:
+              bind: 5
+              column_net: P6
+            bottom:
+              bind: [1,1,1,3]
+              column_net: P7
+        middle:
+          spread: cx+1.5
+          rotate: -4
+          stagger: 0.5cy
+          rows:
+            top:
+              bind: [1,5,1,10]
+              column_net: P8
+            home:
+              bind: 5
+              column_net: P9
+            bottom:
+              bind: 3
+              column_net: P10
+        index:
+          spread: cx+1.5
+          stagger: -0.5cy
+          rotate: -4
+          rows:
+            top:
+              column_net: P11
+            home:
+              column_net: P12
+            bottom:
+              column_net: P13
+        far:
+          spread: cx
+          rows:
+            top:
+              column_net: P14
+            home:
+              column_net: P15
+            bottom:
+              column_net: P16
+    thumb:
+      anchor:
+        ref: matrix_index_bottom
+        shift: [0,-cy]
+      rows:
+        home:
+      columns:
+        outer:
+          rows:
+            home:
+              column_net: P17
+        central:
+          spread: cx+5
+          rotate: -30
+          stagger: -7
+          rows:
+            home:
+              column_net: P17
+        inner:
+          spread: cx+5
+          stagger: -6
+          rotate: -30
+          rows:
+            home:
+              column_net: P17
+
+outlines:
+  exports:
+    raw:
+      - type: keys
+        side: left
+        size: [cx-0.5, cy-0.5]
+      # space for controller and binding
+      # the thumb zone to the rest of the board
+      - type: rectangle
+        size: [63, 100]
+        anchor:
+          ref: matrix_index_top
+          shift: [-10, -90.7]
+      # removing excess material on the 
+      # inner of the thumb-section
+      - type: circle
+        radius: 45
+        operation: subtract
+        anchor:
+          ref: thumb_inner_home
+          shift: [5, -55]
+    cutout:
+      - type: outline
+        name: raw
+        fillet: 2
+    keycap_outlines:
+      - type: keys
+        side: left
+        size: [cx-0.5, cy-0.5]
+        bound: false
+    preview:
+      - type: outline
+        name: cutout
+      - type: outline
+        name: keycap_outlines
+        operation: subtract
+    raw_with_keycaps:
+      - type: outline
+        name: raw
+      - type: outline
+        name: keycap_outlines
+        operation: subtract
+
+
+pcbs:
+  brett:
+    outlines:
+      board:
+        outline: cutout
+      keycaps:
+        outline: keycap_outlines
+        layer: Eco1.User
+    footprints: 
       promicro:
-        what: promicro_pretty
-        where:
-          ref: 
+        type: promicro_pretty
+        anchor:
+          ref: matrix_far_top
+          shift: [cx+5,-12]
+          rotate: -90
