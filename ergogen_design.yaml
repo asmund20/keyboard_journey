@@ -81,9 +81,6 @@ points:
 
   key:
     padding: cy
-    tags: 
-      1u: true
-    
 
 outlines:
   raw:
