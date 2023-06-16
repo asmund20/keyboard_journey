@@ -91,27 +91,23 @@ outlines:
       size: [cx, cy]
       where: true
       bound: true
-    - what: polygon
-      points:
-        - ref: thumb_far_home
-          shift: [0.5cx, -8.3]
-        - ref: thumb_mid_home
-          shift: [1.5cx, 2]
-        - ref: thumb_close_home
-          shift: [-0.5cx, 2cy+33]
-        - ref: thumb_close_home
-          shift: [-9, -2cy]
+    - what: rectangle
+      size: [70,100]
+      where:
+        ref: matrix_index_top
+        shift: [26,-38]
     - what: circle
       radius: 35
       where:
         ref: thumb_far_home
-        shift: [1,-45]
+        shift: [1, -45]
       operation: subtract
     - what: rectangle
-      size: [60,60]
+      size: [20, 50]
       where:
-        ref: matrix_index_top
-        shift: [21,-16]
+        ref: matrix_index_bottom
+        shift: [60, -33]
+      operation: subtract
 
   cutout:
     - what: outline
